@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Filters</title>
+</head>
+<body>
+
+    <div class="flex flex col justify-center p-5">
+        <input id="buscadorPorNombre" type="text" placeholder="Buscar producto..."
+            class="text-center w-80 h-10 bg-[#d2ccff] rounded-xl font-bold">
+    </div>
+    <div id="mensajeBusquedaVacia" class="flex flex-wrap gap-8 justify-center items-center">
+
+    </div>
+    <div id="cardsProductos" class="flex flex-wrap gap-8 justify-center items-center"></div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
