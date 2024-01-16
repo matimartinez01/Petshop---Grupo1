@@ -1,4 +1,7 @@
 //FILTRO POR NOMBRE
+const $checkbox = document.getElementById( 'checkbox' )
+
+
 
 fetch("https://moviestack.onrender.com/api/petshop")
 .then(response => response.json())
@@ -18,7 +21,9 @@ fetch("https://moviestack.onrender.com/api/petshop")
     imprimirCards(articulosPetShop, $cardsProductos)
 
     $buscadorPorNombre.addEventListener("input", e => {
-        const filtroNombre = filtrarProductosPorNombre(articulosPetShop, $buscadorPorNombre)
+        const filtrados = filtroPorCategoria(articulosPetShop)
+        const filtroNombre = filtrarProductosPorNombre(filtrados, $buscadorPorNombre)
+        
         console.log(filtroNombre);
         if (filtroNombre.length == 0) { 
             imprimirBusquedaVacia($mensajeBusquedaVacia, $buscadorPorNombre)
@@ -28,7 +33,18 @@ fetch("https://moviestack.onrender.com/api/petshop")
             
         }
     })
+        $checkbox.addEventListener( "input", () => {
+        const filtroNombre = filtrarProductosPorNombre(articulosPetShop, $buscadorPorNombre)
+        const filtrados = filtroPorCategoria(filtroNombre)
+
+
+        imprimirCards(filtrados, $cardsProductos)
+        console.log( filtrados )
+        })
+
 })
+
+
 .catch(error => console.log(error))
 
 
@@ -57,6 +73,23 @@ function ocultarBusquedaVacia(idHTML){
     idHTML.innerHTML = ""
 }
 
+const filtroPorCategoria = ( productos ) => {
+    const seleccionados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+    .map(input => input.value)
+    
+    if (seleccionados.length == 0) {
+        return productos
+    }
+    const productosFiltrados = productos.filter( producto => seleccionados.includes( producto.categoria ) )
+
+    return productosFiltrados
+}
+
+
+
+
+
+
 
 ///////////////////////////////////////////////////
 function crearCards(imagen, producto, categoria, descripcion, id){
@@ -80,7 +113,6 @@ function imprimirCards (listaArticulos, idHTML) {
     }
     idHTML.innerHTML = articuloCard
 }
-
 
 
 
