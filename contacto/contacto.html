@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="..............................................">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <title>Contacto</title>
+</head>
+<body>
+    <section class="flex flex-col justify-center items-center">
+        <h2 class="font-extrabold pb-3 text-center text-3xl text-[#FFA602]">¡Contáctanos para mimar a tu mascota!</h2>
+        <p class="font-ligth pb-3 text-center text-xl w-[50%]">¡Bienvenido a [Nombre de tu tienda]! Nos emociona ser parte de la felicidad y salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los mejores productos y servicios.
+            ¿Tienes alguna pregunta, sugerencia o simplemente quieres compartir historias sobre tus adorables amigos peludos? Estamos aquí para escucharte. Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.
+            Gracias por elegirnos para el cuidado y entretenimiento de tus mascotas. ¡Estamos ansiosos por saber de ti y consentir a tus adorables compañeros!</p>
+        <div class="flex flex-col items-center">
+            <form class="max-w-[500px] flex flex-wrap flex-col items-center gap-6">
+                <label for="nombre" class="flex flex-col font-semibold italic text-center">Nombre:
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre"
+                        class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="apellido" class="flex flex-col font-semibold italic text-center">Apellido:
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido"
+                        class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="telefono" class="flex flex-col font-semibold italic text-center">Teléfono:
+                    <input type="text" id="telefono" name="telefono" placeholder="Teléfono"
+                        class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="email" class="flex flex-col font-semibold italic text-center">Email:
+                    <input type="email" id="email" name="email"  placeholder="Dirección de mail"
+                        class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="mascota" class="flex flex-col font-semibold italic text-center">Mi mascota es un:
+                    <input type="text" id="mascota" name="mascota"  placeholder="Perro, Gato, etc"
+                        class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
+                </label>
+                
+                <label for="message" class="flex flex-col font-semibold italic text-center">Mensaje:
+                    <textarea id="message" name="message" rows="4" class="font-normal bg-orange-200 rounded-lg w-80 h-60 resize-none px-6"></textarea>
+                </label>
+                <button id="btnEnviar" type="submit" class="bg-red-500 rounded-lg w-40 h-12 font-bold text-white">Enviar</button>
+            </form>
+        </div>
+        <div id="textoFormContacto">
+
+        </div>
+    </section>
+<script src="./contacto.js"></script>
+</body>
+</html>
