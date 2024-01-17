@@ -1,4 +1,6 @@
 const $tablaCarrito = document.getElementById("tablaCarrito")
+const $carritoAside = document.getElementById( 'carritoAside' )
+const $mainCarrito = document.getElementById("mainCarrito")
 
 let arrayPrecioFinal = []
 let precioTotal = 0
@@ -24,8 +26,8 @@ function crearTablaCarrito(producto){
         <td class="border border-black cantidad h-10">1</td>
         <td class="border border-black precioIndividual h-10">${producto.precio}</td>
         <td class="border border-black precioTotal h-10">${producto.precio}</td>
-        <td><input class="inputCantidad text-center h-10" id="${id}" type="number" min="0" max=${producto.disponibles} placeholder="1" value="1"></td>
-        <td><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito bg-black" data-id=${producto._id}></i></button></td>
+        <td class="w-2"><input class="inputCantidad text-center h-10 w-4" id="${id}" type="number" min="0" max=${producto.disponibles} placeholder="1" value="1"></td>
+        <td class="w-5"><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito opacity-0" data-id=${producto._id}></i></button></td>
     </tr>`
 }
 
@@ -35,13 +37,15 @@ function crearTablaCarrito(producto){
 function filaPrecioTotal(precio){
     return`
     <tr>
-        <th class="border border-black text-left" colspan="3">Precio Final</td>
+        <th class="border border-black text-left bg-[#659e9b]" colspan="3">Precio Final</td>
         <td class="border border-black" id="precioFinal">${precio}</td>
     </tr>
     `
 }
 //Guardo los productos que estan en localStorage en productosCarrito
 let productosCarrito = JSON.parse(localStorage.getItem("carrito")) || []
+if(productosCarrito.length > 0){
+
 //Creo el string con las filas de los productos y la fila del precio final
 let stringProductosCarrito = productosCarrito.map(a => crearTablaCarrito(a)).join(" ")
 //Le hago innerHTML a las strings de antes para imprimir en pantalla los datos
@@ -54,6 +58,39 @@ for(let a of arrayProductos){
 
 let stringPrecioFinal = filaPrecioTotal(precioFinalPosta)
 $tablaCarrito.innerHTML += stringPrecioFinal
+let carrito = crearPago(precioFinalPosta)
+$carritoAside.innerHTML = carrito
+function compraRealizada(){
+let $botonCompra = document.getElementById("compra")
+  $botonCompra.addEventListener("click", e =>{
+    if(precioFinalPosta > 0){
+    Swal.fire({
+      title: "Seguro quieres realizar la compra?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "SI"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Pago realizado",
+          text: "Su compra se ha realizado con éxito!",
+          icon: "success"
+        });
+        productosCarrito = []
+        localStorage.setItem('carrito', JSON.stringify(productosCarrito))
+        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+        $mainCarrito.innerHTML += articuloPeliculaVacio("Pago realizado", "Seguir comprando")      
+      }
+    })}
+    else{
+      Swal.fire("Debes comprar al menos un artículo");
+    }
+  })
+
+}
+compraRealizada()
 
 //  ------------------------------   ACA ARRANCA EL KILOMBASO   ------------------------------
 
@@ -84,9 +121,9 @@ for (let cantidad of $inputCantidad){
         let $botonClases = $boton.classList
         //Si cantidad es igual a 0 lo muestra, sino no
         if(cantidadPrueba == 0){
-            $botonClases.remove("bg-black")
+            $botonClases.remove("opacity-0")
         }else{
-            $botonClases.add("bg-black")
+            $botonClases.add("opacity-0")
         }
         //Precio total = individual * cantidad y lo guardo en la tabla en su columna
         precioTotal = $precioIndividual * cantidadPrueba
@@ -108,6 +145,9 @@ for (let cantidad of $inputCantidad){
             precioFinalPosta = precioFinalPosta + a
         }
         $precioFinal.innerHTML = precioFinalPosta
+        carrito = crearPago(precioFinalPosta)
+        $carritoAside.innerHTML = carrito
+        compraRealizada()
     })
     
 }
@@ -126,57 +166,60 @@ for (let boton of $botonesBorrar){
              productoBoton.botonCarrito = !productoBoton.botonCarrito
              productosCarrito = productosCarrito.filter(a => a._id != productoBoton._id)
              localStorage.setItem("carrito", JSON.stringify(productosCarrito))
-             boton.parentElement.parentElement.parentElement.remove()
+             if(productosCarrito.length == 0){
+              boton.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+              $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
+             }else{
+               boton.parentElement.parentElement.parentElement.remove()
+              }
          }
     })
 }
+}else{
+  $tablaCarrito.remove()
+  $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
 
-const $carritoAside = document.getElementById( 'carritoAside' )
+}
 
-$carritoAside.innerHTML += `<div class="container">
+
+function crearPago(precio) {
+  return `
+<div class="container">
 <div class="card cart">
-  <label class="title">CHECKOUT</label>
+  <label class="title">PAGO</label>
   <div class="steps">
     <div class="step">
       <div>
-        <span>SHIPPING</span>
-        <p>221B Baker Street, W1U 8ED</p>
-        <p>London, United Kingdom</p>
+        <span>RETIRO EN SUCURSAL</span>
+        <p>Paraguay 2334 5 F</p>
+        <p>Buenos Aires, Argentina</p>
       </div>
       <hr>
       <div>
-        <span>PAYMENT METHOD</span>
+        <span>METODO DE PAGO</span>
         <p>Visa</p>
         <p>**** **** **** 4243</p>
       </div>
       <hr>
-      <div class="promo">
-        <span>HAVE A PROMO CODE?</span>
-        <form class="form">
-          <input type="text" placeholder="Enter a Promo Code" class="input_field">
-          <button>Apply</button>
-        </form>
-      </div>
-      <hr>
-      <div class="payments">
-        <span>PAYMENT</span>
-        <div class="details">
-          <span>Subtotal:</span>
-          <span>$240.00</span>
-          <span>Shipping:</span>
-          <span>$10.00</span>
-          <span>Tax:</span>
-          <span>$30.40</span>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
-
 <div class="card checkout">
   <div class="footer">
-    <label class="price">$280.40</label>
-    <button class="checkout-btn">Checkout</button>
+    <label class="price">${precio}</label>
+    <button class="checkout-btn" id="compra">COMPRAR</button>
   </div>
 </div>
-</div>`
+</div>`}
+
+function articuloPeliculaVacio(mensaje, mensaje2){
+  return `
+  <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:hover:scale-105 lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center">
+  <article class="min-h-[150px] bg-[#6D38E0] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5">
+    <h1 class="text-3xl font-bold p-3 text-center">${mensaje}</h1>
+    <h1 class="text-3xl font-bold p-3 text-center">${mensaje2}</h1>
+  </article>
+  </a>
+  `
+}
