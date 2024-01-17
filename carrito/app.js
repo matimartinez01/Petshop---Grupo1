@@ -8,7 +8,6 @@ function crearBoton(producto, id){
 }
 
 let productosCarrito = JSON.parse(localStorage.getItem("carrito")) || []
-console.log(productosCarrito)
 function comprobarId(array, idProducto){
     let arrayId = array.map(a => a._id)
     return arrayId.includes(idProducto)
@@ -34,14 +33,14 @@ fetch('https://moviestack.onrender.com/api/petshop')
         boton.addEventListener("click", (e) => {
             let boton_seleccionado = e.target.dataset.id
             boton_seleccionado = productos.find(a => a._id == boton_seleccionado)
+            console.log(boton_seleccionado)
             boton_seleccionado.estaEnCarrito = !boton_seleccionado.estaEnCarrito
             let listaClases = boton.classList
             listaClases = listaClases.toggle("bg-black")
-            console.log(boton_seleccionado)
             if(!comprobarId(productosCarrito, boton_seleccionado._id)){
                 productosCarrito.push(boton_seleccionado)
             }
-            else{
+             else{
                 productosCarrito = productosCarrito.filter(a => a._id != boton_seleccionado._id)
             }
             localStorage.setItem("carrito", JSON.stringify(productosCarrito))
