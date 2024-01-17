@@ -18,15 +18,14 @@ fetch("https://moviestack.onrender.com/api/petshop")
             } else {
                 ocultarBusquedaVacia($mensajeBusquedaVacia)
                 contenedorProducts.innerHTML = recorrerProdructs(filtroNombre)
-
+                funcionamientoBoton()
             }
         })
         $checkbox.addEventListener("input", () => {
             const filtroNombre = filtrarProductosPorNombre(data, $buscadorPorNombre)
             const filtrados = filtroPorCategoria(filtroNombre)
-
-
             contenedorProducts.innerHTML = recorrerProdructs(filtrados)
+            funcionamientoBoton()
             console.log(filtrados)
         })
 
@@ -49,7 +48,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
 
         contenedorProducts.innerHTML = recorrerProdructs(data)
 
-
+        function funcionamientoBoton(){
         const $botones = document.querySelectorAll(".boton_carrito")
         for (let boton of $botones) {
             boton.addEventListener("click", (e) => {
@@ -87,8 +86,8 @@ fetch("https://moviestack.onrender.com/api/petshop")
                 }
 
             })
-        }
-
+        }}
+        funcionamientoBoton()
     })
     
     .catch (err => console.log(err))
