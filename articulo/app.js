@@ -23,12 +23,13 @@ fetch("https://moviestack.onrender.com/api/petshop")
                     <p class="px-1.5 text-xl font-semibold">$${producto.precio}</p>
                     <div class="flex justify-between p-1.5">
                         <a href="detail.html?id=${producto._id}" class="w-[85px] flex justify-center bg-purple-600 text-purple-100 p-2 rounded-xl font-medium hover:bg-purple-700">Detalle</a>
-                        <div class="w-[85px] flex justify-center p-2 bg-green-600 rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">Comprar</div>
+                        <div class="boton_carrito w-[85px] flex justify-center p-2 bg-green-600 rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">Comprar</div>
                     </div>
                 </div>
             </div>
             `
         }
+
 
         contenedorProducts.innerHTML = recorrerProdructs(data)
 
