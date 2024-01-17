@@ -174,6 +174,8 @@ for (let boton of $botonesBorrar){
               }
          }
     })
+<<<<<<< HEAD
+=======
 }
 }else{
   $tablaCarrito.remove()
@@ -222,4 +224,5 @@ function articuloPeliculaVacio(mensaje, mensaje2){
   </article>
   </a>
   `
+>>>>>>> dev
 }
