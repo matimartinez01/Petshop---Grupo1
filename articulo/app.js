@@ -61,8 +61,8 @@ fetch("https://moviestack.onrender.com/api/petshop")
                 let divComprar = e.target
 
                 if(boton_seleccionado.disponibles < 1){
-                    listaClases.remove("text-black","bg-green-600", "hover:bg-green-700" ,"hover:opacity-80")
-                    listaClases.add("text-black")
+                    listaClases.remove("bg-green-600", "hover:bg-green-700" ,"hover:opacity-80")
+                    listaClases.add("text-red-600")
                     divComprar.textContent = "Sin Stock"
                 }else{
 
