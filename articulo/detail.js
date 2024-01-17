@@ -11,9 +11,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
         const productoDetalle = data.find(product => product._id == id)
         console.log(productoDetalle)
 
-
-        const ultimasUnidades = productoDetalle.disponibles <= 5 ? 'Ultimas 5 unidades restantes' : ""
-        console.log(ultimasUnidades)
+        const ultimasUnidades = productoDetalle.disponibles <= 5 ? `Unidades restantes ${productoDetalle.disponibles}` : "";
 
         detalleProducto.innerHTML = `
             <div class="flex flex-wrap h-3/6">
