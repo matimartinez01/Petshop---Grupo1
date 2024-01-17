@@ -7,9 +7,8 @@ const detalleProducto = document.getElementById("contDetalle")
 fetch("https://moviestack.onrender.com/api/petshop")
     .then(response => response.json())
     .then(data => {
-
+        a = data
         const productoDetalle = data.find(product => product._id == id)
-        console.log(productoDetalle)
 
         const ultimasUnidades = productoDetalle.disponibles <= 5 ? `Unidades restantes ${productoDetalle.disponibles}` : "";
 
@@ -22,7 +21,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
                     <h1 class="font-semibold text-lg">${productoDetalle.producto}</h1>
                     <h2 class="text-neutral-500 text-lg">${productoDetalle.categoria}</h2>
                     <p class="text-justify">${productoDetalle.descripcion}</p>
-                    <p class="text-xl font-semibold">$${productoDetalle.precio}</p>
+                    <p class="text-xl font-semibold">${productoDetalle.precio.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}</p>
                     <p class="text-xl font-semibold text-red-500">${ultimasUnidades}</p>
                     <a href="./index.html"><div class="text-blue-500 font-medium cursor-pointer text-lg hover:text-blue-400">Seguir comprando</div></a>
                 </article>

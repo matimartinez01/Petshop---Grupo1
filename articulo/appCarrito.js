@@ -21,13 +21,13 @@ function crearTablaCarrito(producto){
         precioTotalProducto: producto.precio
     })
     return`
-    <tr>
+    <tr class="text-sm md:text-lg">
         <td class="border border-black producto h-10">${producto.producto}</td>
         <td class="border border-black cantidad h-10">1</td>
         <td class="border border-black precioIndividual h-10">${producto.precio}</td>
-        <td class="border border-black precioTotal h-10">${producto.precio}</td>
+        <td class="border border-black precioTotal h-10">${producto.precio.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}</td>
         <td class="w-2"><input class="inputCantidad text-center h-10 w-4" id="${id}" type="number" min="0" max=${producto.disponibles} placeholder="1" value="1"></td>
-        <td class="w-5"><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito opacity-0" data-id=${producto._id}></i></button></td>
+        <td class="w-2"><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito opacity-0" data-id=${producto._id}></i></button></td>
     </tr>`
 }
 
@@ -56,9 +56,9 @@ for(let a of arrayProductos){
     precioFinalPosta = precioFinalPosta + a.precioTotalProducto
 }
 
-let stringPrecioFinal = filaPrecioTotal(precioFinalPosta)
+let stringPrecioFinal = filaPrecioTotal(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
 $tablaCarrito.innerHTML += stringPrecioFinal
-let carrito = crearPago(precioFinalPosta)
+let carrito = crearPago(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
 $carritoAside.innerHTML = carrito
 function compraRealizada(){
 let $botonCompra = document.getElementById("compra")
@@ -127,7 +127,7 @@ for (let cantidad of $inputCantidad){
         }
         //Precio total = individual * cantidad y lo guardo en la tabla en su columna
         precioTotal = $precioIndividual * cantidadPrueba
-        $precioHTML.innerHTML = precioTotal
+        $precioHTML.innerHTML = precioTotal.toLocaleString("es-AR", {style: "currency", currency: "ARS"})
         //Seleccion el precio final
         let $precioFinal = document.getElementById("precioFinal")
         //Uso el arrayProductos que creaba un objeto por cada input
@@ -144,8 +144,8 @@ for (let cantidad of $inputCantidad){
         for (let a of precioAuxiliar){
             precioFinalPosta = precioFinalPosta + a
         }
-        $precioFinal.innerHTML = precioFinalPosta
-        carrito = crearPago(precioFinalPosta)
+        $precioFinal.innerHTML = precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"})
+        carrito = crearPago(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
         $carritoAside.innerHTML = carrito
         compraRealizada()
     })
