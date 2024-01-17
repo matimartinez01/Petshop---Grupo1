@@ -73,7 +73,7 @@ function ocultarBusquedaVacia(idHTML){
     idHTML.innerHTML = ""
 }
 
-const filtroPorCategoria = ( productos ) => {
+function filtroPorCategoria( productos ){
     const seleccionados = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
     .map(input => input.value)
     
@@ -91,7 +91,7 @@ const filtroPorCategoria = ( productos ) => {
 
 
 
-///////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function crearCards(imagen, producto, categoria, descripcion, id){
     return `<article class="articleCards flex flex-col gap-1 items-center w-[330px] min-h-[460px] rounded-2xl pt-3 px-4 pb-3 shadow-2xl bg-white border-2 border-[#d2ccff]">
                 <img class= "h-[200px] object-cover rounded-t-2xl pb-2" src="${imagen}" alt="Imagen de: ${producto}">
