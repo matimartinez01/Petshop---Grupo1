@@ -142,7 +142,7 @@ function crearCardProducto(producto) {
                 <h1 class="font-semibold px-1.5 text-lg h-[60px] grow text-center py-1">${producto.producto}</h1>
                 <div class="flex flex-col justify-between gap-1.5">
                     <h2 class="px-1.5 text-neutral-500 text-lg">${producto.categoria}</h2>
-                    <p class="px-1.5 text-xl font-semibold">$${producto.precio}</p>
+                    <p class="px-1.5 text-xl font-semibold">${producto.precio.toLocaleString('es-AR', {style:'currency', currency:'ARS'})}</p>
                     <div class="flex justify-between p-1.5">
                         <a href="detail.html?id=${producto._id}" class="w-[85px] flex justify-center bg-purple-600 text-purple-100 p-2 rounded-xl font-medium hover:bg-purple-700">Detalle</a>
                         <div data-id="${producto._id}" class="boton_carrito w-[85px] flex justify-center p-2 ${aux} rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">Comprar</div>

@@ -39,7 +39,6 @@ a {
   left: 0;
   top: 0;
   width: 100%;
- 
 
 }
 .topnav{
@@ -137,6 +136,7 @@ transition: opacity 0.3s;
   line-height: 60px;
 
 }
+
 .abrir-menu{
   display: block;
   border: none;

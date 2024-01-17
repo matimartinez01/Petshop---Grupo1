@@ -10,38 +10,38 @@
 </head>
 <body>
     <section class="flex flex-col justify-center items-center">
-        <h2 class="font-extrabold pb-3 text-center text-3xl text-[#FFA602]">¡Contáctanos para mimar a tu mascota!</h2>
-        <p class="font-ligth pb-3 text-center text-xl w-[50%]">¡Bienvenido a [Nombre de tu tienda]! Nos emociona ser parte de la felicidad y salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los mejores productos y servicios.
+        <h2 class="font-extrabold text-center text-3xl text-[#FFA602] px-4">¡Contáctanos para mimar a tu mascota!</h2>
+        <p class="font-ligth text-center text-l p-4">¡Bienvenido a [Nombre de tu tienda]! Nos emociona ser parte de la felicidad y salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los mejores productos y servicios.
             ¿Tienes alguna pregunta, sugerencia o simplemente quieres compartir historias sobre tus adorables amigos peludos? Estamos aquí para escucharte. Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.
             Gracias por elegirnos para el cuidado y entretenimiento de tus mascotas. ¡Estamos ansiosos por saber de ti y consentir a tus adorables compañeros!</p>
         <div class="flex flex-col items-center">
             <form class="max-w-[500px] flex flex-wrap flex-col items-center gap-6">
-                <label for="nombre" class="flex flex-col font-semibold italic text-center">Nombre:
+                <label for="nombre" class="flex flex-col font-semibold text-center">Nombre:
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre"
                         class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
                 </label>
 
-                <label for="apellido" class="flex flex-col font-semibold italic text-center">Apellido:
+                <label for="apellido" class="flex flex-col font-semibold text-center">Apellido:
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido"
                         class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
                 </label>
 
-                <label for="telefono" class="flex flex-col font-semibold italic text-center">Teléfono:
+                <label for="telefono" class="flex flex-col font-semibold text-center">Teléfono:
                     <input type="text" id="telefono" name="telefono" placeholder="Teléfono"
                         class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
                 </label>
 
-                <label for="email" class="flex flex-col font-semibold italic text-center">Email:
+                <label for="email" class="flex flex-col font-semibold text-center">Email:
                     <input type="email" id="email" name="email"  placeholder="Dirección de mail"
                         class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
                 </label>
 
-                <label for="mascota" class="flex flex-col font-semibold italic text-center">Mi mascota es un:
+                <label for="mascota" class="flex flex-col font-semibold text-center">Mi mascota es un:
                     <input type="text" id="mascota" name="mascota"  placeholder="Perro, Gato, etc"
                         class="font-normal bg-orange-200 text-center sm:text-start sm:pl-6 rounded-lg w-80 h-8">
                 </label>
                 
-                <label for="message" class="flex flex-col font-semibold italic text-center">Mensaje:
+                <label for="message" class="flex flex-col font-semibold text-center">Tu mensaje:
                     <textarea id="message" name="message" rows="4" class="font-normal bg-orange-200 rounded-lg w-80 h-60 resize-none px-6"></textarea>
                 </label>
                 <button id="btnEnviar" type="submit" class="bg-red-500 rounded-lg w-40 h-12 font-bold text-white">Enviar</button>
@@ -50,6 +50,24 @@
         <div id="textoFormContacto">
 
         </div>
+
+
+
+        
+        <div>
+            <h3 class="font-extrabold text-center text-2xl text-[#FFA602] px-4 pt-20">Nuestra Dirección:</h3>
+            <div class="flex justify-center items-center">
+                <img class="w-10 h-10" src="./hogar.png" alt="Logo dirección">
+                <p class="font-semibold text-center text-l p-4">Paraguay 2334 - 5° "F". C.A.B.A</p>
+            </div>
+            
+            <p class="font-bold text-center text-xl p-4">Si no sabés como llegar:</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.243040483404!2d-58.401195400000006!3d-34.5980153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca9158e82c41%3A0xc9298756ad93344d!2sParaguay%202334%205f%2C%20C1121ABL%20CABA!5e0!3m2!1ses-419!2sar!4v1705500641027!5m2!1ses-419!2sar" 
+            width="300" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+
+        
     </section>
 <script src="./contacto.js"></script>
 </body>
