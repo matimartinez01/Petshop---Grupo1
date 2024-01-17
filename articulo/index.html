@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Petshop - producto</title>
 </head>
 <body>
@@ -13,12 +14,12 @@
             <input id="buscadorPorNombre" type="text" placeholder="Buscar producto..." class="text-center w-80 h-10 bg-[#d2ccff] rounded-xl font-bold">
         </div>
 
-        <div id="checkbox">
-            <label for="farmacia">farmacia
-              <input type="checkbox" value="farmacia" name="categoria" id="farmacia">
+        <div id="checkbox" class="flex flex-col gap-3">
+            <label for="farmacia" class="text-xl"> Farmacia
+              <input type="checkbox" value="farmacia" name="categoria" id="farmacia" class="checkbox">
             </label>
-            <label for="juguetes">Juguetes
-              <input type="checkbox" value="jugueteria" name="categoria" id="juguetes">
+            <label for="juguetes" class="text-xl">Juguetes
+              <input type="checkbox" value="jugueteria" name="categoria" id="juguetes" class="checkbox">
             </label>
         </div>
         <div id="mensajeBusquedaVacia" class="flex flex-wrap gap-8 justify-center items-center">
