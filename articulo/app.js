@@ -53,41 +53,45 @@ fetch("https://moviestack.onrender.com/api/petshop")
         const $botones = document.querySelectorAll(".boton_carrito")
         for (let boton of $botones) {
             boton.addEventListener("click", (e) => {
+
                 let boton_seleccionado = e.target.dataset.id
-
                 boton_seleccionado = productos.find(data => data._id == boton_seleccionado)
+                
 
-                boton_seleccionado.estaEnCarrito = !boton_seleccionado.estaEnCarrito
                 let listaClases = boton.classList
+                let divComprar = e.target
 
-                if (listaClases.contains("bg-green-600")){
-                    listaClases.remove("bg-green-600")
-                    listaClases.add("bg-green-800")
+                if(boton_seleccionado.disponibles < 1){
+                    listaClases.remove("text-black","bg-green-600", "hover:bg-green-700" ,"hover:opacity-80")
+                    listaClases.add("text-black")
+                    divComprar.textContent = "Sin Stock"
                 }else{
-                    listaClases.remove("bg-green-800")
-                    listaClases.add("bg-green-600")
+
+                    boton_seleccionado.estaEnCarrito = !boton_seleccionado.estaEnCarrito
+    
+                    if (listaClases.contains("bg-green-600")){
+                        listaClases.remove("bg-green-600")
+                        listaClases.add("bg-green-800")
+                    }else{
+                        listaClases.remove("bg-green-800")
+                        listaClases.add("bg-green-600")
+                    }
+    
+                    if (!comprobarId(productosCarrito, boton_seleccionado._id)) {
+                        productosCarrito.push(boton_seleccionado)
+                    }
+                    else {
+                        productosCarrito = productosCarrito.filter(data => data._id != boton_seleccionado._id)
+                    }
+                    localStorage.setItem("carrito", JSON.stringify(productosCarrito))
                 }
 
-                if (!comprobarId(productosCarrito, boton_seleccionado._id)) {
-                    productosCarrito.push(boton_seleccionado)
-                }
-                else {
-                    productosCarrito = productosCarrito.filter(data => data._id != boton_seleccionado._id)
-                }
-                localStorage.setItem("carrito", JSON.stringify(productosCarrito))
             })
         }
 
     })
     
     .catch (err => console.log(err))
-
-
-function comprobarId(array, idProducto) {
-    let arrayId = array.map(data => data._id)
-    return arrayId.includes(idProducto)
-}
-
 
 
 //------------------------------------------- FUNCIONES ----------------------------------------------------------------------------------------------------------------------
@@ -126,6 +130,12 @@ const filtroPorCategoria = (productos) => {
 
     return productosFiltrados
 }
+
+function comprobarId(array, idProducto) {
+    let arrayId = array.map(data => data._id)
+    return arrayId.includes(idProducto)
+}
+
 function recorrerProdructs(array) {
     let cardProduct = ""
     for (const producto of array) {
