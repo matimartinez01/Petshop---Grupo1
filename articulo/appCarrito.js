@@ -1,5 +1,5 @@
 const $tablaCarrito = document.getElementById("tablaCarrito")
-const $carritoAside = document.getElementById( 'carritoAside' )
+const $carritoAside = document.getElementById('carritoAside')
 const $mainCarrito = document.getElementById("mainCarrito")
 
 let arrayPrecioFinal = []
@@ -14,13 +14,13 @@ let arrayProductos = []
 //La cuarta fila es el precio total, despues se le pone el valor
 //La quinta es el boton que borra la fila
 //La sexta es el input que sirve para mostrar la cantidad, guarda un id que se va aumentando y tiene como maximo el stock del producto
-function crearTablaCarrito(producto){
-    id = id + 1
-    arrayProductos.push({
-        id: id,
-        precioTotalProducto: producto.precio
-    })
-    return`
+function crearTablaCarrito(producto) {
+  id = id + 1
+  arrayProductos.push({
+    id: id,
+    precioTotalProducto: producto.precio
+  })
+  return `
     <tr>
         <td class="border border-black producto h-10">${producto.producto}</td>
         <td class="border border-black cantidad h-10">1</td>
@@ -34,8 +34,8 @@ function crearTablaCarrito(producto){
 
 
 //Crea la fila del precio final sin ningun valor
-function filaPrecioTotal(precio){
-    return`
+function filaPrecioTotal(precio) {
+  return `
     <tr>
         <th class="border border-black text-left bg-[#659e9b]" colspan="3">Precio Final</td>
         <td class="border border-black" id="precioFinal">${precio}</td>
@@ -44,140 +44,140 @@ function filaPrecioTotal(precio){
 }
 //Guardo los productos que estan en localStorage en productosCarrito
 let productosCarrito = JSON.parse(localStorage.getItem("carrito")) || []
-if(productosCarrito.length > 0){
+if (productosCarrito.length > 0) {
 
-//Creo el string con las filas de los productos y la fila del precio final
-let stringProductosCarrito = productosCarrito.map(a => crearTablaCarrito(a)).join(" ")
-//Le hago innerHTML a las strings de antes para imprimir en pantalla los datos
-$tablaCarrito.innerHTML += stringProductosCarrito
-let precioFinalPosta = 0
+  //Creo el string con las filas de los productos y la fila del precio final
+  let stringProductosCarrito = productosCarrito.map(a => crearTablaCarrito(a)).join(" ")
+  //Le hago innerHTML a las strings de antes para imprimir en pantalla los datos
+  $tablaCarrito.innerHTML += stringProductosCarrito
+  let precioFinalPosta = 0
 
-for(let a of arrayProductos){
+  for (let a of arrayProductos) {
     precioFinalPosta = precioFinalPosta + a.precioTotalProducto
-}
+  }
 
-let stringPrecioFinal = filaPrecioTotal(precioFinalPosta)
-$tablaCarrito.innerHTML += stringPrecioFinal
-let carrito = crearPago(precioFinalPosta)
-$carritoAside.innerHTML = carrito
-function compraRealizada(){
-let $botonCompra = document.getElementById("compra")
-  $botonCompra.addEventListener("click", e =>{
-    if(precioFinalPosta > 0){
-    Swal.fire({
-      title: "Seguro quieres realizar la compra?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "SI"
-    }).then((result) => {
-      if (result.isConfirmed) {
+  let stringPrecioFinal = filaPrecioTotal(precioFinalPosta)
+  $tablaCarrito.innerHTML += stringPrecioFinal
+  let carrito = crearPago(precioFinalPosta)
+  $carritoAside.innerHTML = carrito
+  function compraRealizada() {
+    let $botonCompra = document.getElementById("compra")
+    $botonCompra.addEventListener("click", e => {
+      if (precioFinalPosta > 0) {
         Swal.fire({
-          title: "Pago realizado",
-          text: "Su compra se ha realizado con éxito!",
-          icon: "success"
-        });
-        productosCarrito = []
-        localStorage.setItem('carrito', JSON.stringify(productosCarrito))
-        e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-        $mainCarrito.innerHTML += articuloPeliculaVacio("Pago realizado", "Seguir comprando")      
+          title: "Seguro quieres realizar la compra?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "SI"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Pago realizado",
+              text: "Su compra se ha realizado con éxito!",
+              icon: "success"
+            });
+            productosCarrito = []
+            localStorage.setItem('carrito', JSON.stringify(productosCarrito))
+            e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+            $mainCarrito.innerHTML += articuloPeliculaVacio("Pago realizado", "Seguir comprando")
+          }
+        })
       }
-    })}
-    else{
-      Swal.fire("Debes comprar al menos un artículo");
-    }
-  })
+      else {
+        Swal.fire("Debes comprar al menos un artículo");
+      }
+    })
 
-}
-compraRealizada()
+  }
+  compraRealizada()
 
-//  ------------------------------   ACA ARRANCA EL KILOMBASO   ------------------------------
+  //  ------------------------------   ACA ARRANCA EL KILOMBASO   ------------------------------
 
-//Vuelvo el valor del id a 1, creo un array vacio, precioFinalPosta y precioAuxiliar
-id = 1
-let precioAuxiliar = 0
+  //Vuelvo el valor del id a 1, creo un array vacio, precioFinalPosta y precioAuxiliar
+  id = 1
+  let precioAuxiliar = 0
 
-//Selecciono todos los input que tengan la clase "inputCantidad" (Todos los input que hay)
-let $inputCantidad = document.querySelectorAll(".inputCantidad")
+  //Selecciono todos los input que tengan la clase "inputCantidad" (Todos los input que hay)
+  let $inputCantidad = document.querySelectorAll(".inputCantidad")
 
-//Por cada input, pusheo un objeto que tenga: 
-// 1)  El id que cree arriba y se va incrementando
-// 2)  El precio total del producto
-//También por cada input le agrego un eventListener
-for (let cantidad of $inputCantidad){
+  //Por cada input, pusheo un objeto que tenga: 
+  // 1)  El id que cree arriba y se va incrementando
+  // 2)  El precio total del producto
+  //También por cada input le agrego un eventListener
+  for (let cantidad of $inputCantidad) {
     cantidad.addEventListener("change", e => {
-        let cantidadPrueba = e.target.value
-        //En $cantidadHTML basicamente selecciono la columna cantidad de la tabla en la fila donde esta ese input y le agrego esa cantidad a la tabla
-        let $cantidadHTML = cantidad.parentElement.parentElement.querySelector(".cantidad")
-        $cantidadHTML.innerHTML = cantidadPrueba
-        //En $precioHTML lo mismo pero en la columna de precio total
-        let $precioHTML = cantidad.parentElement.parentElement.querySelector(".precioTotal")
-        //Aca guardo el valor de la columna precio individual y lo convierto en numero
-        let $precioIndividual = cantidad.parentElement.parentElement.querySelector(".precioIndividual")
-        $precioIndividual = Number($precioIndividual.textContent)
-        //Selecciono el boton
-        let $boton = cantidad.parentElement.parentElement.querySelector(".botonCarrito")
-        let $botonClases = $boton.classList
-        //Si cantidad es igual a 0 lo muestra, sino no
-        if(cantidadPrueba == 0){
-            $botonClases.remove("opacity-0")
-        }else{
-            $botonClases.add("opacity-0")
+      let cantidadPrueba = e.target.value
+      //En $cantidadHTML basicamente selecciono la columna cantidad de la tabla en la fila donde esta ese input y le agrego esa cantidad a la tabla
+      let $cantidadHTML = cantidad.parentElement.parentElement.querySelector(".cantidad")
+      $cantidadHTML.innerHTML = cantidadPrueba
+      //En $precioHTML lo mismo pero en la columna de precio total
+      let $precioHTML = cantidad.parentElement.parentElement.querySelector(".precioTotal")
+      //Aca guardo el valor de la columna precio individual y lo convierto en numero
+      let $precioIndividual = cantidad.parentElement.parentElement.querySelector(".precioIndividual")
+      $precioIndividual = Number($precioIndividual.textContent)
+      //Selecciono el boton
+      let $boton = cantidad.parentElement.parentElement.querySelector(".botonCarrito")
+      let $botonClases = $boton.classList
+      //Si cantidad es igual a 0 lo muestra, sino no
+      if (cantidadPrueba == 0) {
+        $botonClases.remove("opacity-0")
+      } else {
+        $botonClases.add("opacity-0")
+      }
+      //Precio total = individual * cantidad y lo guardo en la tabla en su columna
+      precioTotal = $precioIndividual * cantidadPrueba
+      $precioHTML.innerHTML = precioTotal
+      //Seleccion el precio final
+      let $precioFinal = document.getElementById("precioFinal")
+      //Uso el arrayProductos que creaba un objeto por cada input
+      //El objeto que coincida su id con el del input (que lo guarde cuando cree la tabla) le cambia el valor de precioTotalProducto al de precioTotal
+      for (let a of arrayProductos) {
+        if (a.id == cantidad.id) {
+          a.precioTotalProducto = precioTotal
         }
-        //Precio total = individual * cantidad y lo guardo en la tabla en su columna
-        precioTotal = $precioIndividual * cantidadPrueba
-        $precioHTML.innerHTML = precioTotal
-        //Seleccion el precio final
-        let $precioFinal = document.getElementById("precioFinal")
-        //Uso el arrayProductos que creaba un objeto por cada input
-        //El objeto que coincida su id con el del input (que lo guarde cuando cree la tabla) le cambia el valor de precioTotalProducto al de precioTotal
-        for(let a of arrayProductos){
-            if(a.id == cantidad.id){
-                a.precioTotalProducto = precioTotal
-            }
-        }
-        //Crea un array con el precioTotalProducto de todos los objetos
-        precioAuxiliar = arrayProductos.map(a => Number(a.precioTotalProducto))
-        precioFinalPosta = 0
-        //Aca sumo los valores del array precioAuxiliar y despues lo imprimo en la pantalla
-        for (let a of precioAuxiliar){
-            precioFinalPosta = precioFinalPosta + a
-        }
-        $precioFinal.innerHTML = precioFinalPosta
-        carrito = crearPago(precioFinalPosta)
-        $carritoAside.innerHTML = carrito
-        compraRealizada()
+      }
+      //Crea un array con el precioTotalProducto de todos los objetos
+      precioAuxiliar = arrayProductos.map(a => Number(a.precioTotalProducto))
+      precioFinalPosta = 0
+      //Aca sumo los valores del array precioAuxiliar y despues lo imprimo en la pantalla
+      for (let a of precioAuxiliar) {
+        precioFinalPosta = precioFinalPosta + a
+      }
+      $precioFinal.innerHTML = precioFinalPosta
+      carrito = crearPago(precioFinalPosta)
+      $carritoAside.innerHTML = carrito
+      compraRealizada()
     })
-    
-}
 
-//  ------------------------------   Esto es lo mismo que cuando hicimos lo de la pagina favs de movies para borrarlos de ahi   ------------------------------
+  }
+
+  //  ------------------------------   Esto es lo mismo que cuando hicimos lo de la pagina favs de movies para borrarlos de ahi   ------------------------------
 
 
-let $botonesBorrar = document.querySelectorAll(".botonCarrito")
-for (let boton of $botonesBorrar){
-    boton.addEventListener("click", (e) =>{
-        let dataset = e.target.dataset
-        let $cantidad = boton.parentElement.parentElement.parentElement.querySelector(".cantidad")
-        $cantidad = $cantidad.textContent
-        let productoBoton = productosCarrito.find(a => a._id == dataset.id)
-        if($cantidad == 0){
-             productoBoton.botonCarrito = !productoBoton.botonCarrito
-             productosCarrito = productosCarrito.filter(a => a._id != productoBoton._id)
-             localStorage.setItem("carrito", JSON.stringify(productosCarrito))
-             if(productosCarrito.length == 0){
-              boton.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-              $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
-             }else{
-               boton.parentElement.parentElement.parentElement.remove()
-              }
-         }
+  let $botonesBorrar = document.querySelectorAll(".botonCarrito")
+  for (let boton of $botonesBorrar) {
+    boton.addEventListener("click", (e) => {
+      let dataset = e.target.dataset
+      let $cantidad = boton.parentElement.parentElement.parentElement.querySelector(".cantidad")
+      $cantidad = $cantidad.textContent
+      let productoBoton = productosCarrito.find(a => a._id == dataset.id)
+      if ($cantidad == 0) {
+        productoBoton.botonCarrito = !productoBoton.botonCarrito
+        productosCarrito = productosCarrito.filter(a => a._id != productoBoton._id)
+        localStorage.setItem("carrito", JSON.stringify(productosCarrito))
+        if (productosCarrito.length == 0) {
+          boton.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+          $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
+        } else {
+          boton.parentElement.parentElement.parentElement.remove()
+        }
+      }
     })
-<<<<<<< HEAD
-=======
-}
-}else{
+
+  }
+} else {
   $tablaCarrito.remove()
   $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
 
@@ -215,7 +215,7 @@ function crearPago(precio) {
 </div>
 </div>`}
 
-function articuloPeliculaVacio(mensaje, mensaje2){
+function articuloPeliculaVacio(mensaje, mensaje2) {
   return `
   <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:hover:scale-105 lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center">
   <article class="min-h-[150px] bg-[#6D38E0] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5">
@@ -224,5 +224,4 @@ function articuloPeliculaVacio(mensaje, mensaje2){
   </article>
   </a>
   `
->>>>>>> dev
 }
