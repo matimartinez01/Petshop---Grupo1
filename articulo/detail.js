@@ -19,7 +19,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
                     <h1 class="font-semibold text-lg">${productoDetalle.producto}</h1>
                     <h2 class="text-neutral-500 text-lg">${productoDetalle.categoria}</h2>
                     <p class="text-justify">${productoDetalle.descripcion}</p>
-                    <p class="text-xl font-semibold">$${productoDetalle.precio}</p>
+                    <p class="text-xl font-semibold">${productoDetalle.precio.toLocaleString('es-AR', {style:'currency', currency:'ARS'})}</p>
                     <div class="w-[85px] flex justify-center p-2 bg-green-600 rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">Comprar</div>
                 </article>
             </div>        
