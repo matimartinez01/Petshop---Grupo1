@@ -1,60 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Descubre el paraíso para tus mascotas en nuestro Pet Shop, donde ofrecemos una amplia gama de juguetes y artículos de farmacia diseñados
+    para el bienestar y la felicidad de tus compañeros peludos. Explora nuestra selección cuidadosamente seleccionada que incluye juguetes divertidos, accesorios de alta 
+    calidad y productos de farmacia especializados para satisfacer todas las necesidades de tus mascotas. En nuestro Pet Shop, nos apasiona brindar a tus amigos de cuatro 
+    patas la atención y el amor que se merecen, ofreciendo productos que fomentan la diversión, la salud y el cariño. ¡Bienvenido al destino perfecto para consentir a tus 
+    mascotas con lo mejor en juguetes y cuidados farmacéuticos">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/1d67b26f86.js" crossorigin="anonymous"></script>
-<<<<<<< HEAD
-=======
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="../access/imagenes/mascotas.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
->>>>>>> dev
 </head>
-<body class="w-full">
+<body class="bg-orange-100">
     <header class="w-full">
-        <nav class="flex justify-around items-center bg-[#f2f2f2]">
-            <img class="w-40 rounded-[100px]" src="/access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
+        <nav class="flex flex-col justify-around items-center bg-orange-100 md:flex-row">
+            <img class="w-40 rounded-[100px]" src="../access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
 
-            <ul class="flex flex-wrap gap-12 ">
-                <li><a class="border-b border-[#307aac] text-[#307aac] font-bold" href="">Inicio</a></li>
-                <li><a class="hover:border-b hover:border-[#307aac]" href="./index.html">Artículos</a></li>
-                <li><a class="hover:border-b hover:border-[#307aac]" href="">Mis Compras</a></li>
-                <li><a class="hover:border-b hover:border-[#307aac]" href="">Contacto</a></li>
+            <ul class="flex flex-wrap gap-4 p-8">
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../index.html">Inicio</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../articulo/index.html">Tienda</a></li>
+                <li><a class="border-b border-[#ff7100] text-[#ff7100] font-extrabold text-l md:text-xl" href="#">Mis Compras</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../contacto/contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <main class="flex w-full items-center flex-col justify-center gap-y-5 md:justify-start" id="mainCarrito">
-        <img class="banner w-full max-h-[550px] object-cover" src="/access/imagenes/petBanner.jpg">
-        <div class="mx-auto flex flex-col mt-5 md:w-4/5 lg:mb-5 md:items-center lg:justify-center">
+        <img class="w-full max-h-[550px] object-cover" src="../access/imagenes/petBanner.jpg"
+        alt="banner de mascotas">        
+        <div class="mx-auto flex flex-col mt-5 md:w-4/5 lg:mb-5 md:items-center lg:justify-center" id="divTabla">
             <div class="flex flex-wrap gap-x-5 h-30 justify-center items-center md:w-full">
-                <table class="w-full text-center md:w-4/5" id="tablaCarrito">
-                    <tr class="border">
-                         <th class="font-bold border border-black p-2 w-10 bg-[#659e9b] text-sm lg:text-lg">Producto</th>
-                         <th class="font-bold border border-black p-2 w-10 bg-[#659e9b] text-sm lg:text-lg">Cantidad</th>
-                         <th class="font-bold border border-black p-2 w-10 bg-[#659e9b] text-sm lg:text-lg">Precio Individual</th>
-                         <th class="font-bold border border-black p-2 w-10 bg-[#659e9b] text-sm lg:text-lg">Precio Total</th>
+                <table class="w-full text-center md:w-4/5 md:ml-16 " id="tablaCarrito">
+                    <tr class="border text-sm md:text-lg">
+                         <th class="font-bold border border-black p-2 w-10 bg-orange-300">Producto</th>
+                         <th class="font-bold border border-black p-2 w-10 bg-orange-300">Cantidad</th>
+                         <th class="font-bold border border-black p-2 w-10 bg-orange-300">Precio Individual</th>
+                         <th class="font-bold border border-black p-2 w-10 bg-orange-300">Precio Total</th>
                          <th class="font-bold p-2 w-2 text-sm lg:text-lg">+/-</th>
                     </tr>
                </table>
             </div>
-<<<<<<< HEAD
-        </div>
-    </main>
-    <a href="index.html">Index</a>
-=======
-            
-            <div id="carritoAside" class="mb-5 mt-5">
+            <div id="carritoAside" class="w-[350px] mb-5 mt-5 mx-auto">
+
                 
             </div>
         </div>
     </main>
-    <footer class="bg-[#02302e] w-full h-16">
-        
+    <footer>
+        <div class="bg-orange-300 h-10 flex justify-center items-center">
+            <p class="texFooter font-semibold text-center">Grupo 1 - Cohort 53</p>
+        </div>
     </footer>
 
->>>>>>> dev
+
     <script src="./appCarrito.js"></script>
 </body>
 </html>
