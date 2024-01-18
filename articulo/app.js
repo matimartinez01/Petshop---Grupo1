@@ -71,10 +71,14 @@ fetch("https://moviestack.onrender.com/api/petshop")
                     if (listaClases.contains("bg-green-600")){
                         listaClases.remove("bg-green-600")
                         listaClases.add("bg-red-800")
+                        listaClases.remove("hover:bg-green-700")
+                        listaClases.add("hover:bg-red-600")
                         divComprar.textContent = "Quitar"
                     }else{
                         listaClases.remove("bg-red-800")
                         listaClases.add("bg-green-600")
+                        listaClases.remove("hover:bg-red-600")
+                        listaClases.add("hover:bg-green-700")
                         divComprar.textContent = "Carrito"
                     }
     
@@ -147,6 +151,7 @@ function recorrerProdructs(array) {
 
 function crearCardProducto(producto) {
     let aux = producto.estaEnCarrito ? "bg-red-800" : "bg-green-600"
+    let aux2 = producto.estaEnCarrito ? "hover:bg-red-600" : "hover:bg-green-700"
     let mensajeAux = producto.estaEnCarrito ? "Quitar" : "Carrito"
     return `
             <div class="flex flex-col h-[380px] w-[280px] bg-white rounded-lg p-2 shadow-2xl">
@@ -157,7 +162,7 @@ function crearCardProducto(producto) {
                     <p class="px-1.5 text-xl font-semibold">${producto.precio.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}</p>
                     <div class="flex justify-between p-1.5">
                         <a href="detail.html?id=${producto._id}" class="w-[85px] flex justify-center bg-orange-400 p-2 rounded-xl font-medium hover:bg-orange-500">Detalle</a>
-                        <div data-id="${producto._id}" class="boton_carrito w-[85px] flex justify-center p-2 ${aux} rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">${mensajeAux}</div>
+                        <div data-id="${producto._id}" class="boton_carrito w-[85px] flex justify-center p-2 ${aux} rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer ${aux2}">${mensajeAux}</div>
                     </div>
                 </div>
             </div>
