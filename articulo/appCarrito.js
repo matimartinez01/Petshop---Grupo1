@@ -222,8 +222,8 @@ function crearPago(precio) {
 
 function articuloPeliculaVacio(mensaje, mensaje2) {
   return `
-  <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:hover:scale-105 lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center lg:mt-0">
-  <article class="min-h-[150px] bg-[#ff7100] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5">
+  <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center lg:mt-0">
+  <article class="min-h-[150px] bg-[#ff7100] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5 lg:hover:bg-orange-400">
     <h1 class="text-3xl font-bold p-3 text-center">${mensaje}</h1>
     <h1 class="text-3xl font-bold p-3 text-center">${mensaje2}</h1>
   </article>
