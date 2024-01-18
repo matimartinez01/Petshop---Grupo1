@@ -11,6 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="../access/imagenes/mascotas.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Petshop - producto</title>
 </head>
 <body>
@@ -27,17 +28,17 @@
         </nav>
     </header>
     <main class="flex flex-col items-center bg-orange-100 min-h-dvh">
-        <img class="w-full max-h-[550px] object-cover" src="../access/imagenes/petBanner.jpg">
+        <h1 class="text-4xl font-bold text-orange-500 text-center pt-6 pb-4">NUESTROS PRODUCTOS</h1>
         <div class="flex flex col justify-center p-5">
             <input id="buscadorPorNombre" type="text" placeholder="Buscar producto..." class="text-center w-80 h-10 bg-[#d2ccff] rounded-xl font-bold">
         </div>
 
-        <div id="checkbox">
-            <label for="farmacia">farmacia
-              <input type="checkbox" value="farmacia" name="categoria" id="farmacia">
+        <div id="checkbox" class="flex gap-5">
+            <label for="farmacia" class="text-xl flex gap-3"> Farmacia
+                <input type="checkbox" value="farmacia" name="categoria" id="farmacia" class="checkbox">
             </label>
-            <label for="juguetes">Juguetes
-              <input type="checkbox" value="jugueteria" name="categoria" id="juguetes">
+            <label for="juguetes" class="text-xl flex gap-3">Juguetes
+                <input type="checkbox" value="jugueteria" name="categoria" id="juguetes" class="checkbox">
             </label>
         </div>
         <div id="mensajeBusquedaVacia" class="flex flex-wrap gap-8 justify-center items-center">
