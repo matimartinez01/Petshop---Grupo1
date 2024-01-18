@@ -65,7 +65,21 @@ fetch("https://moviestack.onrender.com/api/petshop")
                     listaClases.add("text-red-600")
                     divComprar.textContent = "Sin Stock"
                 }else{
-
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.onmouseenter = Swal.stopTimer;
+                          toast.onmouseleave = Swal.resumeTimer;
+                        }
+                      });
+                      Toast.fire({
+                        icon: "success",
+                        title: "Agregado al carrito"
+                      });
                     boton_seleccionado.estaEnCarrito = !boton_seleccionado.estaEnCarrito
     
                     if (listaClases.contains("bg-green-600")){
@@ -80,6 +94,21 @@ fetch("https://moviestack.onrender.com/api/petshop")
                         listaClases.remove("hover:bg-red-600")
                         listaClases.add("hover:bg-green-700")
                         divComprar.textContent = "Carrito"
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                              toast.onmouseenter = Swal.stopTimer;
+                              toast.onmouseleave = Swal.resumeTimer;
+                            }
+                          });
+                          Toast.fire({
+                            icon: "error",
+                            title: "Eliminado del carrito"
+                          });
                     }
     
                     if (!comprobarId(productosCarrito, boton_seleccionado._id)) {
