@@ -1,6 +1,7 @@
 const $tablaCarrito = document.getElementById("tablaCarrito")
 const $carritoAside = document.getElementById('carritoAside')
 const $mainCarrito = document.getElementById("mainCarrito")
+const $divTabla = document.getElementById("divTabla")
 
 let arrayPrecioFinal = []
 let precioTotal = 0
@@ -21,13 +22,13 @@ function crearTablaCarrito(producto) {
     precioTotalProducto: producto.precio
   })
   return `
-    <tr>
+    <tr class="bg-white">
         <td class="border border-black producto h-10">${producto.producto}</td>
         <td class="border border-black cantidad h-10">1</td>
         <td class="border border-black precioIndividual h-10">${producto.precio}</td>
-        <td class="border border-black precioTotal h-10">${producto.precio}</td>
-        <td class="w-2"><input class="inputCantidad text-center h-10 w-4" id="${id}" type="number" min="0" max=${producto.disponibles} placeholder="1" value="1"></td>
-        <td class="w-5"><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito opacity-0" data-id=${producto._id}></i></button></td>
+        <td class="border border-black precioTotal h-10">${producto.precio.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}</td>
+        <td class="w-2 bg-orange-100"><input class="inputCantidad text-center h-10 w-4 " id="${id}" type="number" min="0" max=${producto.disponibles} placeholder="1" value="1"></td>
+        <td class="w-2 bg-orange-100"><button class="flex justify-center"><i class="fa-solid fa-trash botonCarrito opacity-0" data-id=${producto._id}></i></button></td>
     </tr>`
 }
 
@@ -37,8 +38,8 @@ function crearTablaCarrito(producto) {
 function filaPrecioTotal(precio) {
   return `
     <tr>
-        <th class="border border-black text-left bg-[#659e9b]" colspan="3">Precio Final</td>
-        <td class="border border-black" id="precioFinal">${precio}</td>
+        <th class="border border-black text-left bg-orange-300" colspan="3">Precio Final</td>
+        <td class="border border-black bg-white" id="precioFinal">${precio}</td>
     </tr>
     `
 }
@@ -56,9 +57,10 @@ if (productosCarrito.length > 0) {
     precioFinalPosta = precioFinalPosta + a.precioTotalProducto
   }
 
-  let stringPrecioFinal = filaPrecioTotal(precioFinalPosta)
+
+let stringPrecioFinal = filaPrecioTotal(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
   $tablaCarrito.innerHTML += stringPrecioFinal
-  let carrito = crearPago(precioFinalPosta)
+  let carrito = crearPago(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
   $carritoAside.innerHTML = carrito
   function compraRealizada() {
     let $botonCompra = document.getElementById("compra")
@@ -128,7 +130,7 @@ if (productosCarrito.length > 0) {
       }
       //Precio total = individual * cantidad y lo guardo en la tabla en su columna
       precioTotal = $precioIndividual * cantidadPrueba
-      $precioHTML.innerHTML = precioTotal
+      $precioHTML.innerHTML = precioTotal.toLocaleString("es-AR", {style: "currency", currency: "ARS"})
       //Seleccion el precio final
       let $precioFinal = document.getElementById("precioFinal")
       //Uso el arrayProductos que creaba un objeto por cada input
@@ -137,6 +139,7 @@ if (productosCarrito.length > 0) {
         if (a.id == cantidad.id) {
           a.precioTotalProducto = precioTotal
         }
+
       }
       //Crea un array con el precioTotalProducto de todos los objetos
       precioAuxiliar = arrayProductos.map(a => Number(a.precioTotalProducto))
@@ -145,8 +148,8 @@ if (productosCarrito.length > 0) {
       for (let a of precioAuxiliar) {
         precioFinalPosta = precioFinalPosta + a
       }
-      $precioFinal.innerHTML = precioFinalPosta
-      carrito = crearPago(precioFinalPosta)
+      $precioFinal.innerHTML = precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"})
+      carrito = crearPago(precioFinalPosta.toLocaleString("es-AR", {style: "currency", currency: "ARS"}))
       $carritoAside.innerHTML = carrito
       compraRealizada()
     })
@@ -176,9 +179,11 @@ if (productosCarrito.length > 0) {
       }
     })
 
+
   }
 } else {
   $tablaCarrito.remove()
+  $divTabla.remove()
   $mainCarrito.innerHTML += articuloPeliculaVacio("No hay articulos en el carrito", "Ir a la tienda")
 
 }
@@ -217,8 +222,8 @@ function crearPago(precio) {
 
 function articuloPeliculaVacio(mensaje, mensaje2) {
   return `
-  <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:hover:scale-105 lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center">
-  <article class="min-h-[150px] bg-[#6D38E0] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5">
+  <a href="./index.html" class="mt-10 w-full mb-[250px] md:mb-[400px] lg:hover:scale-105 lg:items-center lg:min-w-[350px] lg:mb-5 flex justify-center lg:mt-0">
+  <article class="min-h-[150px] bg-[#ff7100] flex flex-col text-white w-full rounded-2xl border-2 border-white md:w-3/5">
     <h1 class="text-3xl font-bold p-3 text-center">${mensaje}</h1>
     <h1 class="text-3xl font-bold p-3 text-center">${mensaje2}</h1>
   </article>

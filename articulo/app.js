@@ -70,10 +70,12 @@ fetch("https://moviestack.onrender.com/api/petshop")
     
                     if (listaClases.contains("bg-green-600")){
                         listaClases.remove("bg-green-600")
-                        listaClases.add("bg-green-800")
+                        listaClases.add("bg-red-800")
+                        divComprar.textContent = "Quitar"
                     }else{
-                        listaClases.remove("bg-green-800")
+                        listaClases.remove("bg-red-800")
                         listaClases.add("bg-green-600")
+                        divComprar.textContent = "Carrito"
                     }
     
                     if (!comprobarId(productosCarrito, boton_seleccionado._id)) {
@@ -144,17 +146,18 @@ function recorrerProdructs(array) {
 }
 
 function crearCardProducto(producto) {
-    let aux = producto.estaEnCarrito ? "bg-green-800" : "bg-green-600"
+    let aux = producto.estaEnCarrito ? "bg-red-800" : "bg-green-600"
+    let mensajeAux = producto.estaEnCarrito ? "Quitar" : "Carrito"
     return `
             <div class="flex flex-col h-[380px] w-[280px] bg-white rounded-lg p-2 shadow-2xl">
                 <img src="${producto.imagen}" alt="imagen del producto" class="h-[180px] object-contain">
                 <h1 class="font-semibold px-1.5 text-lg h-[60px] grow text-center py-1">${producto.producto}</h1>
                 <div class="flex flex-col justify-between gap-1.5">
                     <h2 class="px-1.5 text-neutral-500 text-lg">${producto.categoria}</h2>
-                    <p class="px-1.5 text-xl font-semibold">${producto.precio.toLocaleString('es-AR', {style:'currency', currency:'ARS'})}</p>
+                    <p class="px-1.5 text-xl font-semibold">${producto.precio.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}</p>
                     <div class="flex justify-between p-1.5">
-                        <a href="detail.html?id=${producto._id}" class="w-[85px] flex justify-center bg-purple-600 text-purple-100 p-2 rounded-xl font-medium hover:bg-purple-700">Detalle</a>
-                        <div data-id="${producto._id}" class="boton_carrito w-[85px] flex justify-center p-2 ${aux} rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">Comprar</div>
+                        <a href="detail.html?id=${producto._id}" class="w-[85px] flex justify-center bg-orange-400 p-2 rounded-xl font-medium hover:bg-orange-500">Detalle</a>
+                        <div data-id="${producto._id}" class="boton_carrito w-[85px] flex justify-center p-2 ${aux} rounded-xl text-green-100 font-medium hover:opacity-80 cursor-pointer hover:bg-green-700">${mensajeAux}</div>
                     </div>
                 </div>
             </div>
