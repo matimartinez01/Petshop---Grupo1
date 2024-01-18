@@ -17,7 +17,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
                 <article class="w-full lg:w-2/5">
                     <img src="${productoDetalle.imagen}" alt="imagen del producto" class="object-contain">
                 </article>
-                <article class="flex flex-col gap-2 w-full px-5 items-center lg:w-2/5">
+                <article class="flex flex-col gap-2 w-full px-5 items-center lg:w-2/5 pb-4">
                     <h1 class="font-bold text-xl text-center">${productoDetalle.producto}</h1>
                     <h2 class="text-neutral-600 text-lg mb-5 italic font-semibold">${productoDetalle.categoria}</h2>
                     <p class="text-justify text-lg font-semibold ">${productoDetalle.descripcion}</p>
