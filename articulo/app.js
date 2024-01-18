@@ -14,7 +14,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
 
             console.log(filtroNombre);
             if (filtroNombre.length == 0) {
-                imprimirBusquedaVacia($mensajeBusquedaVacia, $buscadorPorNombre)
+                imprimirBusquedaVacia(contenedorProducts, $buscadorPorNombre)
             } else {
                 ocultarBusquedaVacia($mensajeBusquedaVacia)
                 contenedorProducts.innerHTML = recorrerProdructs(filtroNombre)
@@ -24,9 +24,14 @@ fetch("https://moviestack.onrender.com/api/petshop")
         $checkbox.addEventListener("input", () => {
             const filtroNombre = filtrarProductosPorNombre(data, $buscadorPorNombre)
             const filtrados = filtroPorCategoria(filtroNombre)
+
             contenedorProducts.innerHTML = recorrerProdructs(filtrados)
             funcionamientoBoton()
             console.log(filtrados)
+
+            if(filtrados.length == 0){
+                imprimirBusquedaVacia(contenedorProducts, $buscadorPorNombre)
+            }
         })
 
         
@@ -138,7 +143,7 @@ function filtrarProductosPorNombre(listaArticulos, nombreProducto) {
 
 // EN CASO DE NO COINCIDIR CON EL NOMBRE INGRESADO, DEVOLVEMOS UN MENSAJE. ---------------------------------------------------------------------------------------------------
 function mostrarBusquedaVacia(nombreProducto) {
-    return `<p class="">Disculpe. No hemos podido encontrar productos con el nombre ingresado: ${nombreProducto.value}.</p>`
+    return `<p class="flex justify-center bg-orange-400 p-2 rounded-xl font-semibold">Disculpe. No hemos podido encontrar productos con el nombre ingresado: ${nombreProducto.value}.</p>`
 }
 
 
