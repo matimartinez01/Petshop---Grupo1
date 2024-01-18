@@ -7,8 +7,20 @@
     <title>Petshop - producto</title>
 </head>
 <body>
-    <main class="flex flex-col items-center bg-zinc-400 min-h-dvh">
+    <header class="w-full">
+        <nav class="flex flex-col justify-around items-center bg-orange-100">
+            <img class="w-40 rounded-[100px]" src="../access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
 
+            <ul class="flex flex-wrap justify-center gap-x-10 gap-y-10 p-10 md:gap-12">
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="../index2.html">Inicio</a></li>
+                <li><a class="border-b border-[#ff7100] text-[#ff7100] font-extrabold text-xl" href="./index.html">Tienda</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="./carrito.html">Mis Compras</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="../contacto/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex flex-col items-center bg-orange-100 min-h-dvh">
+        <img class="w-full max-h-[550px] object-cover" src="/access/imagenes/petBanner.jpg">
         <div class="flex flex col justify-center p-5">
             <input id="buscadorPorNombre" type="text" placeholder="Buscar producto..." class="text-center w-80 h-10 bg-[#d2ccff] rounded-xl font-bold">
         </div>
@@ -30,6 +42,12 @@
 
         </article>
     </main>
+    
+    <footer>
+        <div class="bg-orange-300 h-10 flex justify-center items-center">
+            <p class="texFooter font-semibold text-center">Grupo 1 - Cohort 53</p>
+        </div>
+    </footer>
     <script src="./app.js"></script>
 </body>
 </html>

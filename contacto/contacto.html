@@ -9,12 +9,25 @@
     <title>Contacto</title>
 </head>
 <body>
-    <section class="flex flex-col justify-center items-center">
+    <header class="w-full">
+        <nav class="flex flex-col justify-around items-center bg-orange-100">
+            <img class="w-40 rounded-[100px]" src="../access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
+
+            <ul class="flex flex-wrap justify-center gap-x-10 gap-y-10 p-10 md:gap-12">
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="/index2.html">Inicio</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="/articulo/index.html">Tienda</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-xl" href="/articulo/carrito.html">Mis Compras</a></li>
+                <li><a class="border-b border-[#ff7100] text-[#ff7100] font-extrabold text-xl" href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <img class="w-full max-h-[550px] object-cover" src="/access/imagenes/petBanner.jpg">
+    <section class="flex flex-col justify-center items-center md:w-3/4 md:mx-auto md:mt-5">
         <h2 class="font-extrabold text-center text-3xl text-[#FFA602] px-4">¡Contáctanos para mimar a tu mascota!</h2>
-        <p class="font-ligth text-center text-l p-4">¡Bienvenido a [Nombre de tu tienda]! Nos emociona ser parte de la felicidad y salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los mejores productos y servicios.
+        <p class="font-ligth text-center text-l p-4">¡Bienvenido a Groupone Pet! Nos emociona ser parte de la felicidad y salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los mejores productos y servicios.
             ¿Tienes alguna pregunta, sugerencia o simplemente quieres compartir historias sobre tus adorables amigos peludos? Estamos aquí para escucharte. Completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.
             Gracias por elegirnos para el cuidado y entretenimiento de tus mascotas. ¡Estamos ansiosos por saber de ti y consentir a tus adorables compañeros!</p>
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center md:w-full">
             <form class="max-w-[500px] flex flex-wrap flex-col items-center gap-6">
                 <label for="nombre" class="flex flex-col font-semibold text-center">Nombre:
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre"
@@ -54,7 +67,7 @@
 
 
         
-        <div>
+        <div class="mb-5">
             <h3 class="font-extrabold text-center text-2xl text-[#FFA602] px-4 pt-20">Nuestra Dirección:</h3>
             <div class="flex justify-center items-center">
                 <img class="w-10 h-10" src="./hogar.png" alt="Logo dirección">
@@ -69,6 +82,11 @@
 
         
     </section>
+    <footer>
+        <div class="bg-orange-300 h-10 flex justify-center items-center">
+            <p class="texFooter font-semibold text-center">Grupo 1 - Cohort 53</p>
+        </div>
+    </footer>
 <script src="./contacto.js"></script>
 </body>
 </html>
