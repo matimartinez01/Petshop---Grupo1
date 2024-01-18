@@ -1,4 +1,7 @@
 /* Body */
+.bodyArticle{
+  font-family: 'Raleway', sans-serif;
+}
 .container {
     display: grid;
     grid-template-columns: auto;
