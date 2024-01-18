@@ -7,11 +7,11 @@ const detalleProducto = document.getElementById("contDetalle")
 fetch("https://moviestack.onrender.com/api/petshop")
     .then(response => response.json())
     .then(data => {
-        a = data
-        const productoDetalle = data.find(product => product._id == id)
 
-        const ultimasUnidades = productoDetalle.disponibles <= 5 ? `Unidades restantes ${productoDetalle.disponibles}` : "";
+        const productoDetalle = data.find(product => product.id == data._id)
 
+        const ultimasUnidades = productoDetalle.disponibles <= 5 ? 'Ultimas 5 unidades restantes' : ""
+        
         detalleProducto.innerHTML = `
             <div class="flex flex-wrap h-3/6">
                 <article class="w-3/6">
