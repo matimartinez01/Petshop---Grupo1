@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="description" content="Descubre el paraíso para tus mascotas en nuestro Pet Shop, donde ofrecemos una amplia gama de juguetes y artículos de farmacia diseñados
+    para el bienestar y la felicidad de tus compañeros peludos. Explora nuestra selección cuidadosamente seleccionada que incluye juguetes divertidos, accesorios de alta 
+    calidad y productos de farmacia especializados para satisfacer todas las necesidades de tus mascotas. En nuestro Pet Shop, nos apasiona brindar a tus amigos de cuatro 
+    patas la atención y el amor que se merecen, ofreciendo productos que fomentan la diversión, la salud y el cariño. ¡Bienvenido al destino perfecto para consentir a tus 
+    mascotas con lo mejor en juguetes y cuidados farmacéuticos">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../access/imagenes/mascotas.png" type="image/x-icon">
+    <title>Contacto</title>
+</head>
+
+<body>
+    <header class="w-full">
+        <nav class="flex flex-col justify-around items-center bg-orange-100 md:flex-row">
+            <img class="w-40 rounded-[100px]" src="../access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
+
+            <ul class="flex flex-wrap gap-4 p-8">
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../index.html">Inicio</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../articulo/index.html">Tienda</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../articulo/carrito.html">Mis Compras</a></li>
+                <li><a class="border-b border-[#ff7100] text-[#ff7100] font-extrabold text-l md:text-xl" href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="flex flex-col justify-center items-center py-6">
+        <div class="md:flex md:flex-wrap md:justify-center">
+            <img class="w-full md:w-2/5 object-cover rounded-xl" src="../access/imagenes/mascotasContacto.jpg" alt="">
+            <div class="md:flex md:flex-col md:w-2/4 md:justify-center">
+                <h2 class="font-extrabold text-center text-3xl text-[#FFA602] px-4">¡Contáctanos para mimar a tu mascota!</h2>
+                <p class="font-ligth text-center text-l p-4">¡Bienvenido a Groupone Pet! Nos emociona ser parte de la felicidad y
+                salud de tus mascotas. Sabemos lo importantes que son para ti, y estamos comprometidos a ofrecerte los
+                mejores productos y servicios.
+                ¿Tienes alguna pregunta, sugerencia o simplemente quieres compartir historias sobre tus adorables amigos
+                peludos? Estamos aquí para escucharte. Completa el formulario a continuación y nos pondremos en contacto
+                contigo lo antes posible.
+                Gracias por elegirnos para el cuidado y entretenimiento de tus mascotas. ¡Estamos ansiosos por saber de ti y
+                consentir a tus adorables compañeros!</p>
+            </div>
+            
+            </div>
+
+        <div class="flex flex-col items-center">
+            <form class="max-w-[500px] flex flex-wrap flex-col items-center gap-6 py-20" id="form">
+                <label for="nombre" class="flex flex-col font-semibold text-center md:flex-row md:gap-[105px]">Nombre:
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre"
+                        class="font-normal bg-orange-200 text-center md:text-start md:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="apellido"
+                    class="flex flex-col font-semibold text-center md:flex-row md:gap-[105px]">Apellido:
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido"
+                        class="font-normal bg-orange-200 text-center md:text-start md:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="telefono"
+                    class="flex flex-col font-semibold text-center md:flex-row md:gap-[105px]">Teléfono:
+                    <input type="text" id="telefono" name="telefono" placeholder="Teléfono"
+                        class="font-normal bg-orange-200 text-center md:text-start md:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="email" class="flex flex-col font-semibold text-center md:flex-row md:gap-[126px]">Email:
+                    <input type="email" id="email" name="email" placeholder="Dirección de mail"
+                        class="font-normal bg-orange-200 text-center md:text-start md:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="mascota" class="flex flex-col font-semibold text-center md:flex-row md:gap-10">Mi mascota es
+                    un:
+                    <input type="text" id="mascota" name="mascota" placeholder="Perro, Gato, etc"
+                        class="font-normal bg-orange-200 text-center md:text-start md:pl-6 rounded-lg w-80 h-8">
+                </label>
+
+                <label for="message" class="flex flex-col font-semibold text-center md:flex-row md:gap-[84px]">Tu
+                    mensaje:
+                    <textarea id="mensaje" name="message" rows="4"
+                        class="font-normal bg-orange-200 rounded-lg w-80 h-60 resize-none px-6"></textarea>
+                </label>
+                <button id="btnEnviar" type="submit"
+                    class="bg-orange-400 hover:bg-orange-500 rounded-lg w-40 h-12 font-bold text-white">Enviar</button>
+            </form>
+        </div>
+        <div id="textoFormContacto" class="flex flex-col justify-center items-center">
+
+        </div>
+
+
+
+
+        <div class="flex flex-col py-20">
+            <div class="md:flex md:justify-center md:items-center">
+                <h3 class="font-extrabold text-center text-2xl text-[#FFA602] px-4 md:pt-0">Nuestra Dirección:</h3>
+                <div class="flex justify-center items-center">
+                    <img class="w-10 h-10" src="./hogar.png" alt="Logo dirección">
+                    <p class="font-bold text-center text-l p-4 italic">Paraguay 2334 - 5° "F". C.A.B.A</p>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col justify-center items-center">
+                <p class="font-bold text-center text-xl p-4">Si no sabés como llegar:</p>
+                <div class="border-2 border-[#307aac] rounded-xl">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.243040483404!2d-58.401195400000006!3d-34.5980153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca9158e82c41%3A0xc9298756ad93344d!2sParaguay%202334%205f%2C%20C1121ABL%20CABA!5e0!3m2!1ses-419!2sar!4v1705500641027!5m2!1ses-419!2sar"
+                    width="300" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-xl"></iframe>
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+    <footer>
+        <div class="bg-orange-300 h-14 flex justify-center items-center">
+            <p class="texFooter font-semibold text-center">Grupo 1 - Cohort 53</p>
+        </div>
+    </footer>
+    <script src="./contacto.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="description" content="Descubre el paraíso para tus mascotas en nuestro Pet Shop, donde ofrecemos una amplia gama de juguetes y artículos de farmacia diseñados
+    para el bienestar y la felicidad de tus compañeros peludos. Explora nuestra selección cuidadosamente seleccionada que incluye juguetes divertidos, accesorios de alta 
+    calidad y productos de farmacia especializados para satisfacer todas las necesidades de tus mascotas. En nuestro Pet Shop, nos apasiona brindar a tus amigos de cuatro 
+    patas la atención y el amor que se merecen, ofreciendo productos que fomentan la diversión, la salud y el cariño. ¡Bienvenido al destino perfecto para consentir a tus 
+    mascotas con lo mejor en juguetes y cuidados farmacéuticos">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="../access/imagenes/mascotas.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Petshop - producto</title>
+</head>
+<body class="bodyArticle">
+    <header class="w-full">
+        <nav class="flex flex-col justify-around items-center bg-orange-100 md:flex-row">
+            <img class="w-40 rounded-[100px]" src="../access/imagenes/logoPet.jpeg" alt="Banner de mascotas">
+
+            <ul class="flex flex-wrap gap-4 p-8">
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../index.html">Inicio</a></li>
+                <li><a class="border-b border-[#ff7100] text-[#ff7100] font-extrabold text-l md:text-xl" href="#">Tienda</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="./carrito.html">Mis Compras</a></li>
+                <li><a class="hover:border-b hover:border-[#ff7100] text-l md:text-xl" href="../contacto/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex flex-col items-center bg-orange-100 min-h-dvh">
+        <h1 class="text-4xl font-bold text-orange-500 text-center pt-6 pb-4">NUESTROS PRODUCTOS</h1>
+        <div class="flex flex col justify-center p-5">
+            <input id="buscadorPorNombre" type="text" placeholder="Buscar producto..." class="text-center w-80 h-10 bg-orange-200 rounded-xl border-2 border-orange-400 font-bold text-black">
+        </div>
+
+        <div id="checkbox" class="flex gap-5">
+            <label for="farmacia" class="text-xl flex gap-3"> Farmacia
+                <input type="checkbox" value="farmacia" name="categoria" id="farmacia" class="checkbox">
+            </label>
+            <label for="juguetes" class="text-xl flex gap-3">Juguetes
+                <input type="checkbox" value="jugueteria" name="categoria" id="juguetes" class="checkbox">
+            </label>
+        </div>
+        <div id="mensajeBusquedaVacia" class="flex flex-wrap gap-8 justify-center items-center">
+    
+        </div>
+        <div id="cardsProductos" class="flex flex-wrap gap-8 justify-center items-center"></div>
+
+        <article id="contProducts" class="flex flex-wrap justify-center gap-8 max-w-7xl py-14">
+
+        </article>
+    </main>
+    
+    <footer>
+        <div class="bg-orange-300 h-10 flex justify-center items-center">
+            <p class="texFooter font-semibold text-center">Grupo 1 - Cohort 53</p>
+        </div>
+    </footer>
+    <script src="./app.js"></script>
+</body>
+</html>
