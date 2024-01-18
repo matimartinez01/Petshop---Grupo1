@@ -98,7 +98,7 @@ fetch("https://moviestack.onrender.com/api/petshop")
                         listaClases.add("bg-green-600")
                         listaClases.remove("hover:bg-red-600")
                         listaClases.add("hover:bg-green-700")
-                        divComprar.textContent = "Carrito"
+                        divComprar.textContent = "Comprar"
                         const Toast = Swal.mixin({
                             toast: true,
                             position: "top-end",
@@ -186,7 +186,7 @@ function recorrerProdructs(array) {
 function crearCardProducto(producto) {
     let aux = producto.estaEnCarrito ? "bg-red-800" : "bg-green-600"
     let aux2 = producto.estaEnCarrito ? "hover:bg-red-600" : "hover:bg-green-700"
-    let mensajeAux = producto.estaEnCarrito ? "Quitar" : "Carrito"
+    let mensajeAux = producto.estaEnCarrito ? "Quitar" : "Comprar"
     return `
             <div class="flex flex-col h-[380px] w-[280px] bg-white rounded-lg p-2 shadow-2xl">
                 <img src="${producto.imagen}" alt="imagen del producto" class="h-[180px] object-contain">
